@@ -25,7 +25,7 @@ client.once("ready", async () => {
   // 👇 Embed作成
   const embed = new EmbedBuilder()
   .setTitle("🔐 認証システム")
-  .setDescription("下のボタンを押して認証してください")
+  .setDescription("上記の利用規約を確認し、同意した上で認証してください")
   .setColor(0x5865F2)
   .setThumbnail("https://cdn.discordapp.com/attachments/1284639966042783817/1483876510602362972/logo.png");
 
