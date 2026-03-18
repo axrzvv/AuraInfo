@@ -23,26 +23,30 @@ client.once("ready", async () => {
   const url = `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&response_type=code&scope=identify%20guilds%20guilds.join`;
 
   // 👇 Embed作成
-  const embed = new EmbedBuilder()
-  .setTitle("🔐 認証システム")
-  .setDescription("上記の利用規約を確認し、同意した上で認証してください")
+ const embed = new EmbedBuilder()
+  .setTitle("📜 AuraInfo 利用規約")
+  .setDescription(
+`1. 商品受け渡し後の返金はこちら側のミス以外では一切受け付けません
+
+2. 迷惑行為および他サーバーへの勧誘行為・宣伝行為の禁止
+
+3. 許可を得ずに個人でサーバーメンバーにDMをする行為
+
+4. キーの共有・譲渡
+
+5. チケットを開いてから12時間以上経過しても返信がない場合メンションを許可します
+
+6. サーバーメンバー同士による個人間のトラブルに関して当サーバーは一切の責任を負いかねます
+
+7. 管理者は本規約をいつでも変更する権利を有すること
+
+8. 管理者はこれらの規約を違反した場合該当者を追放する権限を有すること
+
+※返金対応は当方の過失が認められる場合のみ対応させて頂きます。`
+  )
   .setColor(0x5865F2)
-  .setThumbnail("https://cdn.discordapp.com/attachments/1284639966042783817/1483876510602362972/logo.png");
-
-  // 👇 ボタン
-  const button = new ActionRowBuilder().addComponents(
-    new ButtonBuilder()
-      .setLabel("認証する")
-      .setStyle(ButtonStyle.Link)
-      .setURL(url)
-  );
-
-  await channel.send({
-    embeds: [embed],
-    components: [button]
-  });
-});
-client.login(process.env.TOKEN);
+  .setFooter({ text: "AuraInfo" })
+  .setTimestamp();
 
 // トップページ
 app.get('/', (req, res) => {
